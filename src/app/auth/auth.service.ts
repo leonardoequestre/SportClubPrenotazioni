@@ -26,11 +26,16 @@ export class AuthService {
   signIn(email: string, password: string) {
     console.log("entro in sign in"+email+password);
     this.http.post("http://localhost:3100/api/checkLogin", { email: email, password: password }).subscribe((data: any) => {
-      this.createUser(data.data[0].id, data.data[0].nome, data.data[0].cognome, data.data[0].email, data.data[0].password)
-      console.log(this.user)
-      localStorage.setItem('user', JSON.stringify(this.user))
-      alert(`Login Effettuato correttamente ${this.user.nome} ${this.user.cognome}`)
-      this.router.navigate(['/prenota'])
+      console.log(data)
+      if (!data.status)
+        alert(data.message)
+      else {
+        this.createUser(data.data[0].id, data.data[0].nome, data.data[0].cognome, data.data[0].email, data.data[0].password)
+        console.log(this.user)
+        localStorage.setItem('user', JSON.stringify(this.user))
+        alert(`Login Effettuato correttamente ${this.user.nome} ${this.user.cognome}`)
+        this.router.navigate(['/prenota'])
+      }
     })
   }
 

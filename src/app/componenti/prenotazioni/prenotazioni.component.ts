@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { HttpClient } from '@angular/common/http';
-import { Component, SimpleChange } from '@angular/core';
+import { ChangeDetectorRef, Component, SimpleChange } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -35,6 +35,7 @@ export class PrenotazioniComponent {
   
 
   constructor(
+    private cdr:ChangeDetectorRef,
     private servizio: PrenotaService,
     private http: HttpClient,
     private _formbuilder: FormBuilder,
@@ -45,7 +46,6 @@ export class PrenotazioniComponent {
   }
 
   getPrenotazioni() {
-    console.log("ciao getprenotazioni")
     let id_persona: number = JSON.parse(localStorage.getItem('user')!).id
     console.log(id_persona)
     let dati: any = {

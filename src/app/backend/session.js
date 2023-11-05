@@ -28,7 +28,7 @@ db.connect((error)=>{
 });
 
 app.get('/api/persone', (req,res)=>{
-    var sql="Select * From persona"
+    let sql="Select * From persona"
     db.query(sql, (error, result)=>{
         if(error){
             console.log(" errore query "+error)
@@ -39,7 +39,7 @@ app.get('/api/persone', (req,res)=>{
 });
 
 app.get('/api/prenotazioni.json', (req,res)=>{
-    var sql="Select * From prenotazione"
+    let sql="Select * From prenotazione"
     db.query(sql, (error, result)=>{
         if(error){
             console.log(" errore query "+error)
@@ -51,7 +51,7 @@ app.get('/api/prenotazioni.json', (req,res)=>{
 
 app.get('/api/deletePrenotazioni/:id', (req,res)=>{
     const {id}=req.params
-    var sql=`delete From prenotazione WHERE id_prenotazione='${id}'`
+    let sql=`delete From prenotazione WHERE id_prenotazione='${id}'`
     db.query(sql, (error, result)=>{
         if(error){
             console.log(" errore query "+error)
@@ -62,7 +62,7 @@ app.get('/api/deletePrenotazioni/:id', (req,res)=>{
 });
 
 app.get('/api/getCampi', (req,res)=>{
-    var sql="Select * From campo_sportivo "
+    let sql="Select * From campo_sportivo "
     db.query(sql, (error, result)=>{
         if(error){
             console.log(" errore query "+error)
@@ -172,6 +172,7 @@ app.post('/api/addpersona', (req,res)=>{
     });
 });
 
+
 app.post('/api/checkLogin', (req,res)=>{
     let dati={
     'email':req.body.email,
@@ -183,7 +184,11 @@ app.post('/api/checkLogin', (req,res)=>{
             console.log("errore checklogin "+ error);
             res.send({status:false, message:"Login Errato"})
         }else{
-            res.send({status:true, message:"Login Success",data:result})
+            console.log(result.length)
+            if(result.length==0)
+                res.send({status:false, message:"Utente non Esistente"})
+            else
+                res.send({status:true, message:"Login Success",data:result})
         }
     });
 });

@@ -27,7 +27,7 @@ export class DialogPrenotaComponent {
     this._adapter.setLocale(this._locale);
     this.campo_selezionato = this.servizioPrenota.getCampoSelezionato()
     this.setOrari()
-    console.log(this.arrayOrario)
+    //console.log(this.arrayOrario)
   }
 
   setOrari() {
@@ -38,7 +38,7 @@ export class DialogPrenotaComponent {
         let orario=new Orario(j%24,i%60)
         this.arrayOrario[indice] = orario.toString()
         indice++
-        i+=30 
+        i+=60 
       }
       j++
       indice++

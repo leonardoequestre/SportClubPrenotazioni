@@ -43,7 +43,6 @@ export class PrenotaService {
       "data": data,
       "ora":ora
     }
-    console.log(dati.data)
     this.http.post("http://localhost:3100/api/addPrenotazioni", dati).subscribe(
       (resultData: any) => {
         if (resultData.status) {
@@ -61,16 +60,18 @@ export class PrenotaService {
       "data": data,
       "ora":ora
     }
-    console.log(dati.data)
-    this.http.post("http://localhost:3100/api/checkPrenotazioni", dati).subscribe(
-      (resultData: any) => {
-        if (resultData.status) {
-          console.log(resultData.message)
-          this.inviaPrenotazione(id_persona,data,ora)
-        } else {
-          alert(resultData.message)
-        }
-      });
+    if (dati.data == "undefined-undefined-" || dati.ora == "")
+      alert("Data o Ora non selezionata")
+    else {
+      this.http.post("http://localhost:3100/api/checkPrenotazioni", dati).subscribe(
+        (resultData: any) => {
+          if (resultData.status) {
+            this.inviaPrenotazione(id_persona, data, ora)
+          } else {
+            alert(resultData.message)
+          }
+        });
+    }
   }
 
   eliminaPrenotazione(id: number) {
