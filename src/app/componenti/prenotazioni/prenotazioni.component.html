@@ -1,0 +1,45 @@
+<section [formGroup]="selezione">
+    <mat-table [dataSource]="prenotazioni" id="tabellaPrenot">
+
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>-------------</th>
+            <td mat-cell *matCellDef="let row">
+              <button (click)="elimina(row)"
+                      mat-fab 
+                      aria-label="Elimina Prenotazione"
+                      id="buttonElimina">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+    
+        <ng-container matColumnDef="nome_campo">
+          <mat-header-cell *matHeaderCellDef> Nome Campo </mat-header-cell>
+          <mat-cell *matCellDef="let p"> {{p.nome_campo}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="tipo_sport">
+          <mat-header-cell *matHeaderCellDef> Tipo Sport </mat-header-cell>
+          <mat-cell *matCellDef="let p"> {{p.tipo_sport}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="data">
+          <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+          <mat-cell *matCellDef="let p"> {{p.data| date:'dd/MM/yyyy' }} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="ora">
+          <mat-header-cell *matHeaderCellDef> Ora </mat-header-cell>
+          <mat-cell *matCellDef="let p"> {{p.orario }} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="prezzo">
+          <mat-header-cell *matHeaderCellDef> Prezzo </mat-header-cell>
+          <mat-cell *matCellDef="let p"> {{p.prezzo | currency:"EUR"}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+    
+      </mat-table>
+    </section>

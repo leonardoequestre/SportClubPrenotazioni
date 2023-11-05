@@ -1,0 +1,26 @@
+<div>
+<h1>Register</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" name="nome" formControlName="nome" required ngModel maxlength="20">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Cognome</mat-label>
+    <input matInput type="text" name="cognome" formControlName="cognome" required ngModel maxlength="20">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Data di Nascita</mat-label>
+    <input matInput type="date" name="data_nascita" formControlName="data_nascita">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" formControlName="email" required email ngModel>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="password" name="password" formControlName="password" required ngModel minlength="6" >
+</mat-form-field>
+<button mat-raised-button type="submit" [disabled]="!registerForm.valid">Registrati</button>
+</form>
+</div>

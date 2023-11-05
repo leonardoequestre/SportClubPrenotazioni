@@ -1,0 +1,71 @@
+h1{
+  position:absolute;
+  left:35%;
+  font-family: Roboto;
+  font-size: 2em;
+  top:8px;
+}
+
+h2{
+  margin-left: 40%;
+  font-family: 'Gill Sans';
+  margin-top:20px;
+  font-style: oblique;
+}
+
+div{
+  width:700px;
+  height: 550px;
+  margin-top:10px;
+  margin-left: 24%;
+  border-radius: 10px;
+  background: transparent;
+  border: 2px solid #9B00EF;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px black;
+  padding:30px 40px;
+}
+
+.example-card {
+    max-width: 400px;
+    position:absolute;
+    left:25%;
+    border-radius: 10px;
+    background:#450086; 
+  }
+
+#buttonCard{
+  width:100%;
+  color:#6E00D5;
+}
+
+.carousel{
+  position:relative;
+  top:50px;
+  bottom:50px;
+}
+
+#prev{
+  position:absolute;
+  top:150px;
+  left:2%;
+  background: #6E00D5;
+  border-radius: 15px;
+  border:1px solid #6E00D5;
+  padding:20px;
+}
+
+#next{
+  position:absolute;
+  top:150px;
+  right:2%;
+  background: #6E00D5;
+  border-radius: 15px;
+  border:1px solid #6E00D5;
+  padding:20px;
+}
+
+#prev:hover, #next:hover{
+  background: black;
+  transition:0.5s;
+}

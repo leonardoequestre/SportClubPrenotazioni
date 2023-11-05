@@ -1,0 +1,48 @@
+
+<mat-toolbar id="toolbar">
+    <button mat-icon-button class="icon-toolbar" (click)="controllaSidenav()">
+      <mat-icon style="color:white;">menu</mat-icon>
+    </button>
+
+    <div>SPORT CLUB</div>
+    
+    <span class="example-spacer"></span>
+    
+    <!----
+    <div [hidden]="!isLogged" id="utenteLoggato">
+      {{utente.nome | uppercase}} {{utente.cognome | uppercase}}
+    </div>
+    -->
+
+    <button [hidden]="isLogged" mat-icon-button routerLink="login">
+      <div class="icon-toolbar" style="color:white">
+        <i class='bx bx-log-in'>
+          <p style="font-size:50%;">Login</p>
+        </i>
+      </div>
+    </button>
+  
+    <button [hidden]="!isLogged" mat-icon-button (click)="onLogout()">
+      <div style="color:white" class="icon-toolbar">
+        <i class='bx bx-log-out'>
+          <p style="font-size:50%; color:white">Logout</p>
+        </i>
+      </div>
+    </button>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="example-container" (backdropClick)="close()" hasBackdrop="false">
+    <mat-sidenav #sidenav mode="push" class="container-side" (keydown.escape)="close()" disableClose>
+        <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="prenota" [routerLinkActive]="'active'" (click)="close()">
+              <span>Prenota</span>
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="prenotazioni" [routerLinkActive]="'active'" (click)="close()">
+              <span>Prenotazioni effettuate</span>
+            </mat-list-item>
+          </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content (click)="close()">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+  }
+.mat-mdc-table {
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+}
+section{
+    padding:30px;
+}
+#tabellaPrenot{
+  border-radius: 20px;
+  background: #17001c;
+  backdrop-filter: blur(20px);
+  box-shadow: 10px 0 10px black;
+  border:1px solid #9B00EF;
+}
+
+mat-cell, mat-header-cell{
+  color:white;
+}
+
+th{ color:#17001c }
+
+mat-row{
+  border: 2px solid #9B00EF;
+  border-radius: 15px;
+}
+
+#buttonElimina{
+  background-color: #6E00D5;
+}

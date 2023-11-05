@@ -1,0 +1,39 @@
+<div>
+    <h1>Prenotazione Campi</h1>
+    <h2>{{ut.nome}} {{ut.cognome}}</h2>
+    <c-carousel transition="slide" [interval]="0" class="carousel">
+    <c-carousel-inner>
+      <c-carousel-item *ngFor="let campo of campi">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{campo.nome_campo }}</mat-card-title>
+            <mat-card-subtitle style="color:white">{{campo.tipo_sport | uppercase}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image *ngIf="campo.tipo_sport=='calcio';" src="assets/img/campo11.jpeg" alt="Campo Calcio a 11" loading="lazy">
+          <img mat-card-image *ngIf="campo.tipo_sport=='calcio a 5';" src="assets/img/campocalcio5.jpg" alt="Campo Calcio a 5">
+          <img mat-card-image *ngIf="campo.tipo_sport=='padel';" src="assets/img/campopadel.jpeg" alt="Campo Padel">
+          <img mat-card-image *ngIf="campo.tipo_sport=='tennis' && this.campo.descrizione.search('terrarossa')!=-1" src="assets/img/campo-tennis-terrarossa.jpg" alt="Campo Tennis Terrarossa">
+          <img mat-card-image *ngIf="campo.tipo_sport=='tennis' && this.campo.descrizione.search('terrarossa')==-1" src="assets/img/campo-tennis-erba.jpg" alt="Campo Tennis Erba">
+          <mat-card-content>
+            <p>
+              {{campo.descrizione}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button id="buttonCard" mat-flat-button (click)="openDialogPrenota(campo)">PRENOTA {{campo.prezzo | currency:'EUR'}}</button>
+          </mat-card-actions>
+        </mat-card>
+      
+      </c-carousel-item>
+    </c-carousel-inner>
+    
+    <c-carousel-control id="prev"  [routerLink] direction="prev">
+        <mat-icon>arrow_back_ios</mat-icon>
+    </c-carousel-control>
+    
+    <c-carousel-control id="next" [routerLink] direction="next">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </c-carousel-control>
+  </c-carousel>
+</div>
