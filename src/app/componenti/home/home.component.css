@@ -44,6 +44,13 @@ span{
     margin-right: 50px;
 }
 
+#iconaAccount{
+    color:white;
+    transform: scale(1.4);
+    margin-top:15px;
+    margin-right:40px;
+}
+
 .icon-toolbar{
     transform: scale(1.3);
 }
@@ -52,4 +59,8 @@ mat-toolbar>div{
     color:white;
     margin-left:39%;
     font-size: 1.4em;
+}
+
+#menu-item{
+    background-color: #140019;
 }

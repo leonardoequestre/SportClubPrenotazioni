@@ -8,11 +8,20 @@
     
     <span class="example-spacer"></span>
     
-    <!----
-    <div [hidden]="!isLogged" id="utenteLoggato">
-      {{utente.nome | uppercase}} {{utente.cognome | uppercase}}
+    
+    <div [hidden]="isLogged" *ngIf="!isLogged; else menuBlock" id="utenteLoggato">
+      Ciao
     </div>
-    -->
+    
+    <ng-template #menuBlock>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <div id="iconaAccount"><mat-icon>account_circle</mat-icon></div>
+      </button>
+      <mat-menu #menu="matMenu" id="menu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>  
+    </ng-template>
 
     <button [hidden]="isLogged" mat-icon-button routerLink="login">
       <div class="icon-toolbar" style="color:white">

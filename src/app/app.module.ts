@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatDividerModule } from '@angular/material/divider'; 
 import { MatListModule } from '@angular/material/list'; 
@@ -54,6 +55,7 @@ import { DialogConfermaComponent } from './componenti/dialog-conferma/dialog-con
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    MatMenuModule,
     MatButtonModule,
     MatSelectModule,
     MatSidenavModule,

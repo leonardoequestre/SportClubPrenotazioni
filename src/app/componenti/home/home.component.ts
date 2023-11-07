@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { RouterStateSnapshot, UrlHandlingStrategy } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({

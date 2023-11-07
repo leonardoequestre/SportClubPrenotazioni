@@ -1,9 +1,7 @@
-import { SelectionModel } from '@angular/cdk/collections';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Orario } from 'src/app/modelli/orario.model';
 import { PrenotaService } from 'src/app/service/prenota.service';

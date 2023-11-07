@@ -1,9 +1,6 @@
-import { NgxMatDatetimePickerModule } from '@angular-material-components/datetime-picker';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDialog } from '@angular/material/dialog';
 import { NgxMaterialTimepickerComponent } from 'ngx-material-timepicker';
-import { Orario } from 'src/app/modelli/orario.model';
 import { PrenotaService } from 'src/app/service/prenota.service';
 
 @Component({
@@ -14,7 +11,7 @@ import { PrenotaService } from 'src/app/service/prenota.service';
 export class DialogPrenotaComponent {
   private campi: any;
   campo_selezionato: any;
-  arrayOrario: string[] = [];
+  @ViewChild('pickerTime') pickerTime!: NgxMaterialTimepickerComponent;
 
   constructor(
     private servizioPrenota: PrenotaService,
@@ -26,23 +23,6 @@ export class DialogPrenotaComponent {
     this._locale = 'it';
     this._adapter.setLocale(this._locale);
     this.campo_selezionato = this.servizioPrenota.getCampoSelezionato()
-    this.setOrari()
-    //console.log(this.arrayOrario)
-  }
-
-  setOrari() {
-    let indice=0,j=7
-    while (j < 24) {
-      let i=0
-      while (i < 60) {
-        let orario=new Orario(j%24,i%60)
-        this.arrayOrario[indice] = orario.toString()
-        indice++
-        i+=60 
-      }
-      j++
-      indice++
-    }
   }
   
   getDateFormatString(): string {
@@ -55,11 +35,10 @@ export class DialogPrenotaComponent {
 
   prenota() {
     let data_letta = (<HTMLInputElement>document.getElementById("inputDate")).value
-    console.log(data_letta.split("/"))
     const data_mod = `${data_letta.split("/")[2]}-${data_letta.split("/")[1]}-${data_letta.split("/")[0]}`
-    console.log(data_mod)
-    const orario=(<HTMLInputElement>document.getElementById("inputTime")).value
+    const orario = (<HTMLInputElement>document.getElementById("inputTime")).value
     let id_utente = JSON.parse(localStorage.getItem('user')!).id
     this.servizioPrenota.controllaPrenotazione(id_utente, data_mod, orario)
   }
 }
+

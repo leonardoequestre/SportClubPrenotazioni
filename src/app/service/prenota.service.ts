@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { elementoPrenotazione } from '../componenti/prenotazioni/prenotazioni.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +7,6 @@ import { elementoPrenotazione } from '../componenti/prenotazioni/prenotazioni.co
 export class PrenotaService {
   private campi_sportivi: any;
   private campo_selezionato: any;
-  private id_persona!: number;
-  private prenotazioni!: any;
-  
 
   constructor(private http: HttpClient) { }
   
@@ -21,20 +17,20 @@ export class PrenotaService {
         }
       ) 
   }
+  
   getCampiSportivi() {
     return this.campi_sportivi
   }
   
   setCampoSelezionato(c_s: any) {
-    console.log("campo_selezionato");
-    console.log(c_s);
+    //console.log("campo_selezionato");
+    //console.log(c_s);
     this.campo_selezionato = c_s;
   }
 
   getCampoSelezionato() {
     return this.campo_selezionato;
   }
-
 
   private inviaPrenotazione(id_persona: number, data: string, ora: string) {
     let dati: any = {
@@ -45,11 +41,10 @@ export class PrenotaService {
     }
     this.http.post("http://localhost:3100/api/addPrenotazioni", dati).subscribe(
       (resultData: any) => {
-        if (resultData.status) {
+        if (resultData.status)
           alert(resultData.message)
-        } else {
+        else
           alert(resultData.message)
-        }
       });
   }
 
@@ -62,6 +57,8 @@ export class PrenotaService {
     }
     if (dati.data == "undefined-undefined-" || dati.ora == "")
       alert("Data o Ora non selezionata")
+    else if (dati.ora.split(":")[1] != "00")
+      alert("Ora non disponibile")
     else {
       this.http.post("http://localhost:3100/api/checkPrenotazioni", dati).subscribe(
         (resultData: any) => {
@@ -82,7 +79,6 @@ export class PrenotaService {
       (resultData: any) => {
         if (resultData.status) {
           alert(resultData.message)
-          console.log(resultData.data)
         }
       });
   }

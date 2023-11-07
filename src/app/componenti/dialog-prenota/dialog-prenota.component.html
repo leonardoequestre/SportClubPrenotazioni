@@ -9,10 +9,10 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Choose Time</mat-label>
-        <input matInput [ngxTimepicker]="pickerTime" id="inputTime" [format]="24" aria-label="24hr format" min="07:30">
+        <input matInput [ngxTimepicker]="pickerTime" id="inputTime" [format]="24" aria-label="24hr format" min="07:00" readonly>
         <mat-hint>hh:mm</mat-hint>
         <mat-datepicker-toggle matIconSuffix (click)="pickerTime.open()"></mat-datepicker-toggle>
-        <ngx-material-timepicker #pickerTime [minutesGap]="30"></ngx-material-timepicker>
+        <ngx-material-timepicker #pickerTime [hoursOnly]="true" ></ngx-material-timepicker>
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

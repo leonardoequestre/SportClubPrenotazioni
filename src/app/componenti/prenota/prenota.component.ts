@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CarouselItemComponent } from '@coreui/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DialogPrenotaComponent } from 'src/app/componenti/dialog-prenota/dialog-prenota.component';
 import { PrenotaService } from 'src/app/service/prenota.service';
