@@ -41,6 +41,15 @@ export class PrenotazioniComponent {
   ) { }
 
   getPrenotazioni() {
+    let data = new Date()
+    let giorno;
+    if (data.getDate().toString().length == 1) {
+      giorno = "0" + data.getDate()
+    }else{
+      giorno=data.getDate()
+    }
+    let dataAttuale = new Date(`${data.getFullYear()}-${data.getMonth()+1}-${giorno}`)
+
     let id_persona: number = JSON.parse(localStorage.getItem('user')!).id
     console.log(id_persona)
     let dati: any = {
@@ -48,10 +57,13 @@ export class PrenotazioniComponent {
     }
     this.http.post("http://localhost:3100/api/getPrenotazioni", dati).subscribe(
       (resultData: any) => {
-        console.log("stampo result data")
-        console.log(resultData.data)
         this.prenotazioni = resultData.data
-        console.log(this.prenotazioni)
+        let p;
+        for (p in this.prenotazioni) {
+          let dataPrenotazione = new Date(this.prenotazioni[p].data.split("T")[0])
+          if (dataPrenotazione.getTime() < dataAttuale.getTime())
+            this.prenotazioni.splice(p,1)
+        }
       }
     )
   }

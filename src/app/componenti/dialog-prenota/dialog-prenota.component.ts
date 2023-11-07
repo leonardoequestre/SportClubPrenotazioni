@@ -34,11 +34,30 @@ export class DialogPrenotaComponent {
   }
 
   prenota() {
+    let data = new Date()
+    let giorno, dataAttuale
     let data_letta = (<HTMLInputElement>document.getElementById("inputDate")).value
     const data_mod = `${data_letta.split("/")[2]}-${data_letta.split("/")[1]}-${data_letta.split("/")[0]}`
+    console.log(data_mod)
+    
+    if (data.getDate().toString().length == 1) {
+      giorno = "0" + data.getDate()
+    }else{
+      giorno=data.getDate()
+    }
+    dataAttuale = new Date(`${data.getFullYear()}-${data.getMonth() + 1}-${giorno}`)
+    console.log("dataAttuale " + dataAttuale)
+    
+    let d_l = new Date(data_mod)
+    console.log("data letta "+d_l)
+
+    
     const orario = (<HTMLInputElement>document.getElementById("inputTime")).value
     let id_utente = JSON.parse(localStorage.getItem('user')!).id
-    this.servizioPrenota.controllaPrenotazione(id_utente, data_mod, orario)
+    if(dataAttuale.getTime()<d_l.getTime())
+      this.servizioPrenota.controllaPrenotazione(id_utente, data_mod, orario)
+    else
+      alert("Cambia Data")
   }
 }
 

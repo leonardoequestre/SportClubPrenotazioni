@@ -1,7 +1,7 @@
 
 <mat-toolbar id="toolbar">
     <button mat-icon-button class="icon-toolbar" (click)="controllaSidenav()">
-      <mat-icon style="color:white;">menu</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
 
     <div>SPORT CLUB</div>
@@ -13,11 +13,11 @@
     </div>
     
     <ng-template #menuBlock>
-      <div id="utenteLoggato">{{utente.nome}} {{utente.cognome}}</div>
+      <p id="utenteLoggato">{{utente.nome | uppercase}} {{utente.cognome | uppercase}}</p>
     </ng-template>
 
     <button [hidden]="isLogged" mat-icon-button routerLink="login">
-      <div class="icon-toolbar" style="color:white">
+      <div class="icon-toolbar">
         <i class='bx bx-log-in'>
           <p style="font-size:50%;">Login</p>
         </i>
@@ -25,9 +25,9 @@
     </button>
   
     <button [hidden]="!isLogged" mat-icon-button (click)="onLogout()">
-      <div style="color:white" class="icon-toolbar">
+      <div class="icon-toolbar">
         <i class='bx bx-log-out'>
-          <p style="font-size:50%; color:white">Logout</p>
+          <p style="font-size:50%">Logout</p>
         </i>
       </div>
     </button>

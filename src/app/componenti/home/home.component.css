@@ -40,12 +40,15 @@ span{
 
 #utenteLoggato{
     font-family: Roboto;
-    font-size: small;
-    margin-right: 50px;
+    color:white;
+    font-size: 0.8em;
+    margin-right: 40px;
+    margin-top:10px;
 }
 
 .icon-toolbar{
     transform: scale(1.3);
+    color:white;
 }
 
 mat-toolbar>div{
