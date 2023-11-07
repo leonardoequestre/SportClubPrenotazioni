@@ -21,8 +21,7 @@ export class PrenotaComponent {
   
   ngOnInit() {
     this.campi = this.servizioPrenota.getCampiSportivi();
-    console.log(this.campi)
-    this.ut=this.authService.user
+    this.ut = this.authService.user
   }
 
   openDialogPrenota(campoSelezionato: any) {

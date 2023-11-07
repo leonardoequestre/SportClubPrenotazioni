@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, SimpleChange } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -40,10 +40,7 @@ export class PrenotazioniComponent {
     private http: HttpClient,
     private _formbuilder: FormBuilder,
     public dialog:MatDialog
-  ) {
-    this.getPrenotazioni()
-    this.dataSource = new MatTableDataSource<elementoPrenotazione>(this.prenotazioni);
-  }
+  ) { }
 
   getPrenotazioni() {
     let id_persona: number = JSON.parse(localStorage.getItem('user')!).id
@@ -64,10 +61,16 @@ export class PrenotazioniComponent {
   elimina(row: elementoPrenotazione) {
     const dialogRef = this.dialog.open(DialogConfermaComponent)
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      if (result)
-        this.servizio.eliminaPrenotazione(row.id_prenotazione)  
+      if (result) {
+        this.servizio.eliminaPrenotazione(row.id_prenotazione)
+        this.ngOnInit()
+      }
     });
+  }
+
+  ngOnInit() {
+    this.getPrenotazioni()
+    this.dataSource = new MatTableDataSource<elementoPrenotazione>(this.prenotazioni);
   }
 
 }
