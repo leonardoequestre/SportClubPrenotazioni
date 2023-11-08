@@ -7,11 +7,13 @@ import { Injectable } from '@angular/core';
 export class PrenotaService {
   private campi_sportivi: any;
   private campo_selezionato: any;
+  private PORTSERVER=3100;
+  URLSERVER= "http://localhost:"+this.PORTSERVER
 
   constructor(private http: HttpClient) { }
   
   getCampi() {
-    this.http.get("http://localhost:3100/api/getCampi").subscribe(
+    this.http.get(this.URLSERVER+"/api/getCampi").subscribe(
         (resultData: any) => {
         this.campi_sportivi = resultData.data;
         }
@@ -39,7 +41,7 @@ export class PrenotaService {
       "data": data,
       "ora":ora
     }
-    this.http.post("http://localhost:3100/api/addPrenotazioni", dati).subscribe(
+    this.http.post(this.URLSERVER+"/api/addPrenotazioni", dati).subscribe(
       (resultData: any) => {
         if (resultData.status)
           alert(resultData.message)
@@ -60,7 +62,7 @@ export class PrenotaService {
     else if (dati.ora.split(":")[1] != "00")
       alert("Ora non disponibile")
     else {
-      this.http.post("http://localhost:3100/api/checkPrenotazioni", dati).subscribe(
+      this.http.post(this.URLSERVER+"/api/checkPrenotazioni", dati).subscribe(
         (resultData: any) => {
           if (resultData.status) {
             this.inviaPrenotazione(id_persona, data, ora)
@@ -75,7 +77,7 @@ export class PrenotaService {
     let dati: any = {
       'id_p': id
     }
-    this.http.get("http://localhost:3100/api/deletePrenotazioni/"+dati.id_p).subscribe(
+    this.http.get(this.URLSERVER+"/api/deletePrenotazioni/"+dati.id_p).subscribe(
       (resultData: any) => {
         if (resultData.status) {
           alert(resultData.message)

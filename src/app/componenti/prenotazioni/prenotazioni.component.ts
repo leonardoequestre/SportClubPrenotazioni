@@ -30,6 +30,7 @@ export class PrenotazioniComponent {
   prenotazioni: any
   dataSource!: MatTableDataSource<elementoPrenotazione>;
   selezione = this._formbuilder.group({ selezionato: false });
+  private URLSERVER=this.servizio.URLSERVER
   
 
   constructor(
@@ -55,7 +56,7 @@ export class PrenotazioniComponent {
     let dati: any = {
       "id_persona": id_persona
     }
-    this.http.post("http://localhost:3100/api/getPrenotazioni", dati).subscribe(
+    this.http.post(this.URLSERVER+"/api/getPrenotazioni", dati).subscribe(
       (resultData: any) => {
         this.prenotazioni = resultData.data
         let p;

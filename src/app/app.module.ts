@@ -29,7 +29,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './componenti/login/login.component';
 import { RegisterComponent } from './componenti/register/register.component';
-import { Pagina1Component } from './componenti/pagina1/pagina1.component';
 import { PrenotaComponent } from './componenti/prenota/prenota.component';
 import { PrenotazioniComponent } from './componenti/prenotazioni/prenotazioni.component';
 import { HomeComponent } from './componenti/home/home.component';
@@ -41,7 +40,6 @@ import { DialogConfermaComponent } from './componenti/dialog-conferma/dialog-con
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    Pagina1Component,
     PrenotaComponent,
     PrenotazioniComponent,
     HomeComponent,

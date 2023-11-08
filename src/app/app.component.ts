@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PrenotaService } from './service/prenota.service';
 import { AuthService } from './auth/auth.service';
 
@@ -20,10 +20,11 @@ export class AppComponent implements OnInit{
       const cognome = JSON.parse(localStorage.getItem('user')!).cognome
       const email = JSON.parse(localStorage.getItem('user')!).email
       const password = JSON.parse(localStorage.getItem('user')!).password
-      this.authService.createUser(id, nome, cognome, email, password)
+      const admin = JSON.parse(localStorage.getItem('user')!).admin
+      this.authService.createUser(id, nome, cognome, email, password, admin)
       console.log(this.authService.user)
     }
-    console.log(this.authService.isLoggedIn)
+    console.log(this.authService.isAuthenticated())
     console.log(this.authService.user)
   }
 

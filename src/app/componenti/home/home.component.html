@@ -13,7 +13,10 @@
     </div>
     
     <ng-template #menuBlock>
-      <p id="utenteLoggato">{{utente.nome | uppercase}} {{utente.cognome | uppercase}}</p>
+      <p id="utenteLoggato">
+        {{utente.nome | uppercase}} {{utente.cognome | uppercase}}
+        <mat-icon [hidden]="isAdmin">supervisor_account</mat-icon>
+      </p>
     </ng-template>
 
     <button [hidden]="isLogged" mat-icon-button routerLink="login">

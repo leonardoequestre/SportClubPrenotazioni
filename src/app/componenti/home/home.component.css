@@ -9,7 +9,7 @@
     left:0;
     right:0;
     color:white;
-    background: url('C:\Users\asus505zabr806t\Desktop\Unipg\3-Programmazione Web e Mobile\esercizi\angular\app-prenotazioni\src\assets\img\blackPurpleneon.jpg') no-repeat;
+    background: url('C:\Users\asus505zabr806t\Desktop\Unipg\progetti\app-prenotazioni\src\assets\img\blackPurpleneon.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -43,7 +43,8 @@ span{
     color:white;
     font-size: 0.8em;
     margin-right: 40px;
-    margin-top:10px;
+    margin-top:15px;
+    display:grid
 }
 
 .icon-toolbar{
@@ -57,3 +58,8 @@ mat-toolbar>div{
     font-size: 1.4em;
 }
 
+p > mat-icon{
+    margin-left:42%;
+    margin-top: -5px;
+    transform:scale(1.2)
+}

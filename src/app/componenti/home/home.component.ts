@@ -12,11 +12,13 @@ export class HomeComponent {
   private isOpen = false;
   isLogged = false;
   utente: any
+  isAdmin=false
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.isLogged = this.authService.isLoggedIn
-    this.utente=JSON.parse(localStorage.getItem('user')!)
+    this.isLogged = this.authService.isAuthenticated()
+    this.isAdmin=this.authService.isAdmin()
+    this.utente = JSON.parse(localStorage.getItem('user')!)
   }
   
   close() {

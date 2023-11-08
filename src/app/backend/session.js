@@ -115,7 +115,7 @@ app.post('/api/checkPrenotazioni',(req,res)=>{
     let orario_fine_prenotazione=`${parseInt(dati.ora.split(':')[0])+1}:${(parseInt(dati.ora.split(':')[1])+30)%60}`
     console.log(orario_fine_prenotazione)
     console.log(parseInt(ora_mod))
-    let sql_controlla=`Select * from prenotazione where campo='${dati.id_campo}' AND persona='${dati.id_persona}'
+    let sql_controlla=`Select * from prenotazione where campo='${dati.id_campo}'
                         AND data='${dati.data}' AND orario='${dati.ora}'`;
     db.query(sql_controlla, (error,result)=>{
         if(error){
